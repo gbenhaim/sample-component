@@ -142,8 +142,6 @@ spec:
         value: $(params.git-url)
       - name: revision
         value: $(params.revision)
-      runAfter:
-      - init
       taskSpec:
         params:
         - description: Repository URL to clone from.
@@ -436,11 +434,7 @@ spec:
                   path: ca-bundle.crt
               optional: true
 
-      when:
-      - input: $(tasks.init.results.build)
-        operator: in
-        values:
-        - "true"
+
       workspaces:
       - name: output
         workspace: workspace
@@ -500,11 +494,7 @@ spec:
         - name: kind
           value: task
         resolver: bundles
-      when:
-      - input: $(tasks.init.results.build)
-        operator: in
-        values:
-        - "true"
+
       workspaces:
       - name: source
         workspace: workspace
@@ -526,10 +516,6 @@ spec:
           value: task
         resolver: bundles
       when:
-      - input: $(tasks.init.results.build)
-        operator: in
-        values:
-        - "true"
       - input: $(params.build-source-image)
         operator: in
         values:
