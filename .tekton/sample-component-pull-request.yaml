@@ -273,7 +273,7 @@ spec:
             value: $(workspaces.basic-auth.bound)
           - name: WORKSPACE_BASIC_AUTH_DIRECTORY_PATH
             value: $(workspaces.basic-auth.path)
-          image: quay.io/gbenhaim0/git-clone:v2
+          image: quay.io/konflux-ci/git-clone@sha256:e856c622b1745067fa3d348c88aaba27c5f96ca23d4b5eae5abec2fa23c7f3f0
           computeResources: {}
           securityContext:
             runAsUser: 0
@@ -372,7 +372,7 @@ spec:
             fi
 
         - name: symlink-check
-          image: quay.io/gbenhaim0/git-clone:v2
+          image: quay.io/konflux-ci/git-clone@sha256:e856c622b1745067fa3d348c88aaba27c5f96ca23d4b5eae5abec2fa23c7f3f0
           # per https://kubernetes.io/docs/concepts/containers/images/#imagepullpolicy-defaulting
           # the cluster will set imagePullPolicy to IfNotPresent
           env:
